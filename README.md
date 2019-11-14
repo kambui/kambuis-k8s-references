@@ -1,2 +1,2 @@
-# kambuis-k8s-references
-My References, definitions Documentation of Kubernetes 
+# Kubernetes References
+Hi, Welcome to my K8S references. This is a repository for me to store everything about kubernetes and other tools around kubernetes (for e.g: Terraform, Docker etc). Basically this is what I do for living and wanted a reference for myself to comeback to incase I forget. This will be largely unstructed dump of my brain. However, I will try my best to organize this when time permits.
