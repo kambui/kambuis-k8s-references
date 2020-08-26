@@ -1,12 +1,11 @@
 
 
 # Using MobaXTerm with VirtualBox and minikube 
-I use MobaXTerm on windows as a base to interact with cloud and k8s clusters. The local terminal of mobaXterm is very powerful and gives you nix feeling on windows. I had customized moba so that these tools are avialable without too much set up time. 
-VirtualBox provides the Hypervisor infrastructure. minikube on windows uses Vbox to create the k8s environment.
+I use MobaXTerm on windows as a base to interact with cloud and k8s clusters. The local terminal of mobaXterm is very powerful and gives you nix feeling on windows. I had customized moba so that these tools are avialable without too much set up time. VirtualBox provides the Hypervisor infrastructure. Minikube on windows uses Vbox to create the k8s environment.
 
 You will need to use a persistant home directory for moba. Then setup the tools using bash_profile
 
-Here is the snippet of .bash_profile
+Here is the snippet of `.bash_profile` which sets up tools needed
 ```
 if [ ! -f /bin/kubectl ]; then
    ln -s /drives/c/ProgramData/chocolatey/bin/kubectl.exe /bin/kubectl
@@ -31,6 +30,7 @@ fi
 ```
 
 ### Minikube Environment
+---
 `C:\>minikube start`
 
 ### List virtual machines
@@ -43,16 +43,19 @@ fi
 -- I use Ubuntu and ubuntu-core for my docker builds. To know more about ubuntu core : https://ubuntu.com/core
 
 ### Start VM in headless mode
+---
 `VBoxManage startvm ubuntu-core --type headless`
 
 ### Show all running VMS
 `vboxmanage list runningvms`
 
 ### Screenshot of the headless vm console output (This is useful to get the ipaddress due to DHCP)
+---
 `vboxmanage controlvm ubuntu-core screenshotpng screen.png`
 
 ### Power off VM
-VBoxManage controlvm ubuntu-core poweroff
+---
+`VBoxManage controlvm ubuntu-core poweroff`
 
 # Using WSL 2 as base and Moba as Terminal
 With the release of WSL 2 (windows subsystem for Linux), I have made changes to my environment. 
@@ -65,3 +68,6 @@ To start a distro;
 ```
 wsl -d <distro_name>
 ```
+### K8S on Docker with Kind
+---
+On the Ubuntu subsystem I am using Kind to bootstrap the K8S cluster. Kind can run a multinode cluster using Docker to host the nodes. As a pre-requisite you will need to install Docker for Windows and enable WSL integration with the subsystem you are running. In our case `Ubuntu18.04`.
