@@ -12,24 +12,28 @@ import (
 func main() {
 	for true {
 		currentTime := time.Now()
-
+		log.Output(1, "Getting London time from worldtime.org")
 		resp, errr := http.Get("http://worldtimeapi.org/api/timezone/Europe/London.txt")
 		if errr != nil {
 			// handle err
+			log.Fatal(errr)
 		}
 		defer resp.Body.Close()
+		log.Output(1, "Reading body data from worldtime.org")
 		body, errrr := ioutil.ReadAll(resp.Body)
 		if errrr != nil {
 			//handle errrr
+			log.Fatal(errr)
 		}
 		bs := string(body)
-
-		myvalidString := "Current Server Time:" + "[" + currentTime.String() + "]" + "\n Current London Time:" + bs + "\n"
+		log.Output(2, "Creating String Output")
+		myvalidString := "Current Server Time:" + "[" + currentTime.String() + "]" + "\n Current London Time:\n" + bs + "\n"
+		log.Output(3, "Writing to file")
 		err := WriteToFile("/tmp/data/output", myvalidString)
 		if err != nil {
 			log.Fatal(err)
 		}
-		time.Sleep(time.Second * 120)
+		time.Sleep(time.Second * 60)
 	}
 }
 

@@ -1,6 +1,6 @@
 FROM golang:alpine AS build-env
 WORKDIR /tmp/app
-COPY write-to-files.go .
+COPY src/github.com/kambui/write-to-files/write-to-files.go .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o write-to-file
 
 FROM registry.access.redhat.com/ubi7/ubi AS myapp
