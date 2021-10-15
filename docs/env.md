@@ -28,10 +28,15 @@ if [ ! -f /bin/terraform ]; then
 fi
 
 ```
+### Requirement 
+VirtualBox 5.2 or higher.
 
 ### Minikube Environment
 ---
-`C:\>minikube start`
+Start a cluster with virtualbox driver
+`C:\>minikube start --driver=virtualbox`
+To make virtualbox the default driver
+`minikube config set driver virtualbox`
 
 ### List virtual machines
 `C:\>vboxmanage list vms`
